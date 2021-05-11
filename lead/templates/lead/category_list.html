@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+  <section class="text-gray-600 body-font" style="user-select: auto;">
+  <div class="container px-5 py-24 mx-auto" style="user-select: auto;">
+    <div class="flex flex-col text-center w-full mb-20" style="user-select: auto;">
+      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900" style="user-select: auto;">Categories</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base" style="user-select: auto;">These categories segment the leads</p>
+    </div>
+    <div class="lg:w-2/3 w-full mx-auto overflow-auto" style="user-select: auto;">
+      <table class="table-auto w-full text-left whitespace-no-wrap" style="user-select: auto;">
+        <thead style="user-select: auto;">
+          <tr style="user-select: auto;">
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl" style="user-select: auto;">Name</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="user-select: auto;">Lead Count</th>
+          </tr>
+        </thead>
+        <tbody data-read-aloud-multi-block="true" style="user-select: auto;">
+          <tr style="user-select: auto;">
+              <td class="px-4 py-3" style="user-select: auto;">Unassigned</td>
+              <td class="px-4 py-3" style="user-select: auto;">{{unassigned_lead_count}}</td>
+            </tr>
+          {% for category in category_list %}
+            <tr style="user-select: auto;">
+              <td class="px-4 py-3" style="user-select: auto;">
+                <a href="{% url 'lead:category-detail' category.pk %}">{{category.name}}</a>
+              </td>
+              <td class="px-4 py-3" style="user-select: auto;">Todo Count</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+  <section class="text-gray-600 body-font" style="user-select: auto;">
+  <div class="container px-5 py-24 mx-auto" style="user-select: auto;">
+    <div class="flex flex-col text-center w-full mb-20" style="user-select: auto;">
+      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900" style="user-select: auto;">{{category.name}}</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base" style="user-select: auto;">these are the lead under this category</p>
+    </div>
+    <div class="lg:w-2/3 w-full mx-auto overflow-auto" style="user-select: auto;">
+      <table class="table-auto w-full text-left whitespace-no-wrap" style="user-select: auto;">
+        <thead style="user-select: auto;">
+          <tr style="user-select: auto;">
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl" style="user-select: auto;">First Name</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" style="user-select: auto;">Last Name</th>
+          </tr>
+        </thead>
+        <tbody data-read-aloud-multi-block="true" style="user-select: auto;">
+          
+          {% for lead  in category.leads.all %}
+            <tr style="user-select: auto;">
+              <td class="px-4 py-3" style="user-select: auto;">
+                <a class="text-blue-500" href="{% url 'lead:lead-detail' lead.pk %}">{{lead.first_name}}</a>
+              </td>
+              <td class="px-4 py-3" style="user-select: auto;">{{lead.last_name}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}
